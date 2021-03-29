@@ -1,26 +1,49 @@
+/**
+ * Additional information about evaluation to a value could be found in Martin Osdersky course
+ * https://www.coursera.org/learn/progfun1/lecture/vzbJj/lecture-1-2-elements-of-programming
+ * Lecture discussing evaluation strategy and how it is used as well as other elements of programming.
+ */
+
 // 2.1 Your First Program
   "Hello world!"
 
   "Hello world!".toUpperCase
 
-// 2.1.1 Compile-time and Run-time
+  "Hello world!".toLowerCase
+
+/** 2.1.1 Compile-time and Run-time
+ * To understand of how compiler is working check `Articles.CompilePhases`
+ * use Below commented code in REPL to see errors output
+ */
+  import Articles.CompilePhases._
   // toUpperCase."Hello world!"
-
   // 2.toUpperCase
+  // "try me
+  // 2 / 0 // Run Time error when divide by 0
 
-  // 2 / 0
-
-// 2.1.2 Expressions, Types, and Values
+/** 2.1.2 Expressions, Types, and Values
+ * Expressions are the parts of a program that evaluate to a value.
+ * Expressions have types, which express some restrictions on programs. During compile-time the types of our programs are checked.
+ * Values exist in the computer’s memory, and are what a running program manipulates. All values in Scala are objects.
+ */
   2.min(3)
   2.max(3)
+// REPL :type 2 / 0
 
-// 2.2.2 Method Calls
+
+
+
+/**
+ * 2.2 Interacting with Object
+ * 2.2.2 Method Calls
+ */
+
   "hello".toUpperCase
   "abcdef".take(3)
   "abcdef".take(2)
 
   "hello".toUpperCase.toLowerCase
-  "Hello world!".take(2 + 3)
+  "Hello world!".take(2 + 3) // TODO Use Articles.CompilePhases to see evaluation process
 
 // 2.2.3 Operators
   123.toShort
@@ -31,24 +54,30 @@
 
   //Infix Operator Notation
   "the quick brown fox" split " "
+  // Note that a b c d e is equivalent to a.b(c).d(e), not a.b(c, d, e).
 
+  // Scala uses a set of precedence rule intuitive understanding from mathematics and logic
   2 * 3 + 4 * 5
   (2 * 3) + (4 * 5)
   2 * (3 + 4) * 5
 
-// 2.3 Literal Objects
-  // -> 2.3.1 Numbers
-  42
-  42.0
-  42.0f
-  42L
+
+
+
+/** 2.3 Literal Objects
+ * 2.3.1 Numbers
+ */
+  42    // Int
+  42.0  // Double
+  42.0f // Float
+  42L   // Long
 
   // -> 2.3.2 Booleans
   true
   false
 
   // -> 2.3.3 Characters
-  'a'
+  'a' // 16-bit Unicode
 
   // -> 2.3.4 Strings
   "this is a string"
@@ -58,7 +87,11 @@
   null
   println("something")
 
-// 2.4 Object Literals
+
+
+/**
+ * 2.4 Object Literals
+ */
   object Test {}
   Test
 
@@ -82,6 +115,8 @@
       def name: resultType =
         bodyExpression
   */
+  // NOTE: Return is Implicit
+  // The return value of the method is determined by evaluating the body—there is no need to write return like you would in Java.
 
   // -> 2.4.2 Fields
   object Test4 {
@@ -98,7 +133,14 @@
       var name: type = valueExpression
    */
 
-  // -> 2.4.3 Methods versus fields
+/**
+ * -> 2.4.3 Methods versus fields
+ * You might wonder why we need fields when we can have methods of
+ * no arguments that seem to work the same. The difference is subtle—
+ *  - a field gives a name to a value,
+ *  - whereas a method gives a name to a computation that produces a value
+  */
+
   object Test7 {
     val simpleField = {
       println("Evaluating simpleField")
@@ -112,13 +154,25 @@
   }
   Test7.simpleField // evaluation run only once after which the final value is stored in the object.
   Test7.noParameterMethod // is evaluated every time we call the method
+  // TODO Find Real Code Example
 
-// 2.6 Compound Expressions
-  // -> 2.6.1 Conditional
+
+
+
+
+/**
+ * 2.6 Compound Expressions
+ * -> 2.6.1 Conditional
+ */
+
   if (1 < 2) "Yes" else "No"
   if(1 < 2) println("Yes") else println("No")
+  val resultString = if (1 < 2) "Yes" else "No" // if/then statements return a value.
+  def abs(x: Int) = if (x >= 0) x else -x
 
-  // -> 2.6.2 Blocks
+  /** 2.6.2 Blocks
+   * Blocks are expressions that allow us to sequence computations together.
+   */
   {
     1; 2; 3
   }
