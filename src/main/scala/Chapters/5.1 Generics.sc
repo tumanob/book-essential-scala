@@ -1,8 +1,9 @@
-/**
- * 5 Sequencing Computations
- * 5.1 Generics
- */
-
+/** <!-- this is title slide -->
+ * <div style="font-size: 14;background-color:#233745; border: 1pt solid #dbb261; padding:15px 30px ; color:#d1d3d4;">
+ *   <h1 style="font-size:24; color:white;">5 Sequencing Computations:</h1>
+ *   <h2 style="font-size: 20; color:#d19d43;">5.1 Generics</h2>
+ *   Definition:
+  */
 final case class Box[A](value: A)
 
 Box(2)
