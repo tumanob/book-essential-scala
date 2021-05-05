@@ -8,7 +8,8 @@ package Articles
  * `scalac -Xprint:namer CompilePhases.scala`
  * namer,pickler,erasure,cleanup
  */
-object CompilePhases extends App { // TODO Remove `extends App` to see the difference in compile results
-    val answer: String = if (1 < 2) "Yes" else "No"
-    println(s"Hello,$answer world".take(2 + 3))
+object CompilePhases {
+    def generic[A](in: A): A = in
+
+    val test: Int = generic(1)
 }
