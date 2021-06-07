@@ -84,6 +84,18 @@
   println(generic[String]("foo")) // A bound to String
   println(generic(1)) // if we omit the type parameter, scala will infer it
 
+  // two step assignment -  1 type, 2 parameter
+  val testGeneric = generic[String] _ //convert method to function. Soon ...
+  val testString = testGeneric("string")
+
+  generic(1) // again, if we omit the type parameter, scala will infer it
+
+  // TODO: to see how compiler add type
+  // scalac -Xprint:packageobjects CompilePhases.scala // step 3
+  //val test: Int = generic(1)
+  // scalac -Xprint:typer CompilePhases.scala
+  //private[this] val test: Int = CompilePhases.this.generic[Int](1); // step 4
+
 
   /**
    * Type parameters work in a way analogous to method parameters. When we call a method
@@ -131,4 +143,24 @@ case class Failure[A](reason: String) extends Result[A]
  * giving us a cleaner way to implement this, but for now this is the pattern we’ll use.
  *
  */
+
+
+
+
+
+
+
+
+/**
+ * <div style="font-size: 14;background-color:#233745; border: 1pt solid #dbb261; padding:15px 30px ; color:#d1d3d4;">
+ *   <h2 style="font-size: 20; color:#d19d43;">Why ADT is important?</h2>
+ *   This is a very important concept and a start for the next book Scala with cats
+ *<br/>
+ * Few articles about ADT:<br/>
+ * <li>https://alvinalexander.com/scala/fp-book/algebraic-data-types-adts-in-scala/
+ * <li>https://dotty.epfl.ch/docs/reference/enums/adts.html
+ * <li>https://docs.scala-lang.org/scala3/book/types-adts-gadts.html
+ */
+val codeNote = "I need More"
+
 
