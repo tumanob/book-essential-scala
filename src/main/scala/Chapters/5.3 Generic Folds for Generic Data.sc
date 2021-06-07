@@ -2,7 +2,7 @@
  * 5.3 Generic Folds for Generic Data
  * The idea of the chapter is to show some aspects of functions and what else you can do with it
  * https://colah.github.io/posts/2015-02-DataList-Illustrated/ Folds and other functions
- *
+ * https://www.youtube.com/watch?v=0qvi_sTJbEw Haskell for Imperative Programmers #9 - Folding (foldr, foldl)
  * After this chapter check more on function in src/main/scala/Articles/Functions.sc
  */
 
