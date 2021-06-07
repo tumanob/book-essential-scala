@@ -6,9 +6,22 @@ package Articles
  * to see the compiler phases result on certain phase type
  * `scalac -Xprint:<phaseName> CompilePhases.scala`
  * `scalac -Xprint:namer CompilePhases.scala`
- * namer,pickler,erasure,cleanup
+ * namer,pickler,erasure,cleanup, constructors
  */
-object CompilePhases extends App { // TODO Remove `extends App` to see the difference in compile results
-    val answer: String = if (1 < 2) "Yes" else "No"
-    println(s"Hello,$answer world".take(2 + 3))
+object CompilePhases {
+
+
+    def divideByTwo(number:Int) = number / 2
+
+    val divideByThree = (number:Int) => number / 3 // implicit type
+
+    /**
+     * This still works with method even if .map need a function parameter
+     * TODO make a compile steps and see difference
+     *
+     */
+    List(2,4,6,8).map(divideByTwo)
+
+    List(3,6,9).map(divideByThree)
+
 }
