@@ -18,7 +18,18 @@ final case class Pair[A](head: A, tail: LinkedList[A]) extends LinkedList[A]
 final case class End[A]() extends LinkedList[A]
 
 
+/**
+Fold Pattern
 
+For an algebraic datatype A, fold converts it to a generic type B. Fold is a structural recursion with:
+
+ - one function parameter for each case in A;
+ - each function takes as parameters the fields for its associated class;
+ - if A is recursive, any function parameters that refer to a recursive field take a parameter of type B.
+
+ The right-hand side of pattern matching cases, or the polymorphic methods as appropriate,
+ consists of calls to the appropriate function.
+ */
 
 
 
@@ -34,7 +45,13 @@ final case class End[A]() extends LinkedList[A]
   (_: Int) * 2 // expanded to (a: Int) => a * 2
 )
 
-/** Few more examples
+/**
+(_: Int) * 2 is expanded by the compiler to (a: Int) => a * 2.
+It is more idiomatic to use the placeholder syntax only in the cases where
+the compiler can infer the types.
+
+Here are a few more examples:
+
   _ + _     // expands to `(a, b) => a + b`
   foo(_)    // expands to `(a) => foo(a)`
   foo(_, b) // expands to `(a) => foo(a, b)`
@@ -60,8 +77,12 @@ final case class End[A]() extends LinkedList[A]
 
 
   def sum(x: Int, y: Int) = x + y
-  val testSum = sum
+  val testSum = sum // not working
   val testSumWorkingOne = sum _
+
+
+
+
 
 
 
@@ -79,7 +100,7 @@ final case class End[A]() extends LinkedList[A]
 def example(x: Int)(y: Int) = x + y
 example(1)(2)
 
-def fold[B](end: B)(pair: (A, B) => B): B =
+def fold[B](end: B)(pair: (A, B) => B): B = // could be def fold[B](end: B, pair: (A, B) => B): B
   this match {
     case End() => end
     case Pair(hd, tl) => pair(hd, tl.fold(end, pair))
