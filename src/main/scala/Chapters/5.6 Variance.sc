@@ -57,8 +57,6 @@
  * T - is contravatiant appears only in method parameter types
  * U - is covariant appears in method result type
  * Note:  Invariant types can appear anywhere
- * @tparam T
- * @tparam U
  */
 trait Function1[-T, +U] {
   def apply(x: T): U
@@ -245,13 +243,16 @@ case class UserAnalytics[A <: Parent]( // Type upper bound
  *    - https://github.com/rockthejvm/advanced-scala/blob/master/src/lectures/part5ts/Variance.scala
          * Big rule
             - method arguments are in CONTRAVARIANT position
-            - return types are in COVARIANT position
+            - return types/function result  are in COVARIANT position
+            - invariant everywhere
 
          * Rule of thumb
             - use covariance = COLLECTION OF THINGS
             - use contravariance = GROUP OF ACTIONS
 
+*/
 
+/**
  * https://i.stack.imgur.com/KjDLw.png - nice comics explaining some relationships
  * https://docs.scala-lang.org/tour/variances.html
  * https://docs.scala-lang.org/scala3/book/types-variance.html
