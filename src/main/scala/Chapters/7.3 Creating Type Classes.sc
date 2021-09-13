@@ -12,9 +12,18 @@ There are four components of the type class pattern:
 */
 
 
+
+
+
+
+
+
+
+
 /**
- * «7.3.2 Creating a Type Class»
- * « an example—converting data to HTML.»
+ * 7.3.2 Creating a Type Class
+ *
+ *  an example—converting data to HTML.
  */
 
 // one implementation strategy - trait -  has multiple drawbacks
@@ -56,7 +65,13 @@ object HtmlWriter {
 
 
 
-// Three - «rendering to an adapter class»
+
+
+
+
+
+
+// Third - rendering to an adapter class
 trait HtmlWriter[A] {
     def write(in: A): String
 }
@@ -64,7 +79,6 @@ trait HtmlWriter[A] {
 object PersonWriter extends HtmlWriter[Person] {
     def write(person: Person) = s"<span>${person.name} &lt;${person.email}&gt;</span>"
 }
-
 PersonWriter.write(Person("John", "john@example.com"))
 
 // now can write own adapters for other types
@@ -76,10 +90,22 @@ object DateWriter extends HtmlWriter[Date] {
 DateWriter.write(new Date)
 
 
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Type Class Pattern
         A type class is a trait with at least one type variable.
-        The type variables specify the concrete types the type class instances are defined for.
+        The type variables specify the concrete types
+            the type class instances are defined for.
         Methods in the trait usually use the type variables.
  */
 
@@ -88,11 +114,15 @@ trait ExampleTypeClass[A] {
 }
 
 
+
+
+
+
+
+
 /**
- * «7.4 Implicit Parameter and Interfaces»
+ * 7.4 Implicit Parameter and Interfaces
  */
-
-
 trait HtmlWriter[A] {
     def write(in: A): String
 }
@@ -111,6 +141,12 @@ HtmlUtil.htmlify(Person("John", "john@example.com"))(PersonWriter)
 
 
 
+
+
+
+
+
+
 // implicit exampe  - work well - compiler is smart
 implicit object ApproximationWriter extends HtmlWriter[Int] {
     def write(in: Int): String =
@@ -120,13 +156,22 @@ implicit object ApproximationWriter extends HtmlWriter[Int] {
 HtmlUtil.htmlify(2)
 
 
+
+
+
+
+
+
+
+
+
 /**
- * «7.4.2 Interfaces Using Implicit Parameters»
+ * 7.4.2 Interfaces Using Implicit Parameters
  *
- * «Type Class Interface Pattern
-«If the desired interface to a type class TypeClass is exactly
-the methods defined on the type class trait, define an interface
-on the companion object using a no-argument apply method like»
+ * Type Class Interface Pattern
+    If the desired interface to a type class TypeClass is exactly
+    the methods defined on the type class trait, define an interface
+    on the companion object using a no-argument apply method like
 
  */
 

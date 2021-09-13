@@ -14,18 +14,26 @@
    2 you can edit the code for the type that you are defining the instance for
     then define the type class instance in the companion object of the type.
 
- «This allows users to override the instance by defining one in the
-local scope whilst still providing sensible default behaviour.»
-
-
+ This allows users to override the instance by defining one in the
+local scope whilst still providing sensible default behaviour.
 */
+
+
+
+
+
+
+
+
+
+
 
 
 /**
  * 7.2.2 Implicit Priority
  *
- * « The practical implication is that the local scope takes precedence over
- * instances found in companion objects.»
+ * The practical implication is that the local scope takes precedence over
+ * instances found in companion objects.
  */
 final case class Rational(numerator: Int, denominator: Int)
 
@@ -41,17 +49,29 @@ object Example {
       (y.numerator.toDouble / y.denominator.toDouble)
   )
 
-//  def example(): Unit =
-//    assert(List(Rational(1, 2), Rational(3, 4), Rational(1, 3)).sorted ==
-//      List(Rational(3, 4), Rational(1, 2), Rational(1, 3)))
+  def example(): Unit =
+    assert(List(Rational(1, 2), Rational(3, 4), Rational(1, 3)).sorted ==
+      List(Rational(3, 4), Rational(1, 2), Rational(1, 3)))
 }
 
 
+
+
+
+
+
+
+
+
+
+
 /**
- * «7.2.3 Packaging Implicit Values Without Companion Objects»
-«If there is no good default instance for a type class instance,
-or if there are several good defaults, we should not place
-type class instances in the companion object but instead require the user to explicitly import an instance into the local scope.»
+ * 7.2.3 Packaging Implicit Values Without Companion Objects
+
+  If there is no good default instance for a type class instance,
+  or if there are several good defaults, we should not place
+  type class instances in the companion object but instead require
+  the user to explicitly import an instance into the local scope.
 
  */
 

@@ -21,11 +21,22 @@
  */
 
 
+
+
+
+
+
+
+
+
+
+
+
 /**
  * 7.1 Type Class Instances
  * 7.1.1 Ordering
  *
- * «A simple example of a type class is the Ordering trait.»
+ * A simple example of a type class is the Ordering trait.
  */
 
 import scala.math.Ordering
@@ -37,9 +48,9 @@ List(3, 4, 2).sorted(minOrdering)
 List(3, 4, 2).sorted(maxOrdering)
 
 /**
- * «The type class pattern separates the implementation of functionality
+ * The type class pattern separates the implementation of functionality
  * (the type class instance, an Ordering[A] in our example)
- * from the type the functionality is provided for (the A in an Ordering[A]).»
+ * from the type the functionality is provided for (the A in an Ordering[A]).
  */
 
 
@@ -57,7 +68,8 @@ List(3, 4, 2).sorted(maxOrdering)
 /**
  * 7.1.2 Implicit Values
  *
- * «Note we didn’t supply an ordering to sorted. Instead, the compiler provides it for us.»
+ * Note we didn’t supply an ordering to sorted.
+ * Instead, the compiler provides it for us.
  */
 
 implicit val ordering: Ordering[Int] = Ordering.fromLessThan[Int](_ < _)
@@ -71,24 +83,27 @@ List(1, 7 ,5).sorted
 
 
 
+
+
+
 /**
- * «7.1.3 Declaring Implicit Values»
- * «An implicit value must be declared within a surrounding object, class, or trait.»
+ * 7.1.3 Declaring Implicit Values
+ *
+ * An implicit value must be declared within a surrounding object, class, or trait.
  */
 
-//implicit val exampleOne = ???
-//implicit var exampleTwo = ???
-//implicit object exampleThree = ???
-//implicit def exampleFour = ???
-
+implicit val exampleOne = ???
+implicit var exampleTwo = ???
+implicit object exampleThree = ???
+implicit def exampleFour = ???
 
 /**
- * «7.1.4 Implicit Value Ambiguity»
- * «The rule is simple: the compiler will signal an error
- * if there is any ambiguity in which implicit value should be used.»
+ * 7.1.4 Implicit Value Ambiguity
+ * The rule is simple: the compiler will signal an error
+ * if there is any ambiguity in which implicit value should be used.
  */
 
 implicit val minOrdering = Ordering.fromLessThan[Int](_ < _)
-implicit val maxOrdering = Ordering.fromLessThan[Int](_ > _)
+//implicit val maxOrdering = Ordering.fromLessThan[Int](_ > _)
 
 List(3,4,5).sorted

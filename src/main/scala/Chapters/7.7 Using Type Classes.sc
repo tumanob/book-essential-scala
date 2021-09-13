@@ -1,9 +1,9 @@
 /**
- * «7.7 Using Type Classes»
+ * 7.7 Using Type Classes
  *
  *  7.7.1 Context Bounds
  */
-//
+
 //def pageTemplate[A : HtmlWriter](body: A): String = {
 //  val renderedBody = body.toHtml
 //
@@ -11,25 +11,52 @@
 //}
 
 /*
- * «Context Bound Syntax
-A context bound is an annotation on a generic type variable like so:
-
-[A : Context]
-It expands into a generic type parameter [A] along with an implicit parameter for a Context[A].»
+  Context Bound Syntax
+    A context bound is an annotation on a generic type variable like so:
+    [A : Context]
+    It expands into a generic type parameter [A] along with
+    an implicit parameter for a Context[A].
  */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
  * 7.7.2 Implicitly
- * «The implicitly method takes no parameters but has a generic type parameters.
- * It returns the implicit matching the given type, assuming there is no ambiguity.»
-
+ *
+ * The implicitly method takes no parameters but has a generic type parameters.
+ * It returns the implicit matching the given type,
+ * assuming there is no ambiguity.
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
  * 7.8 Implicit Conversions
- * has some dangers
+ *  - has some dangers
  */
 
 class B {
@@ -40,10 +67,27 @@ class A
 
 implicit def aToB(in: A): B = new B()
 new A().bar
+/*
+  Steps Compiler do
+  -
+  -
+  -
+ */
+
+
+
+
+
+
+
+
+
+
 
 
 /**
- * «7.8.2 Designing with Implicit Conversions»
+ * 7.8.2 Designing with Implicit Conversions
+ * - the problem
  */
 
 implicit def intToBoolean(int: Int) = int == 0
